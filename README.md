@@ -94,19 +94,8 @@ You must manually boot from U-Boot.
 Run the following in U-Boot:
 
 ```
-mmc info
-```
-
-```
-mmc read 0x90000000 0x100000 0x61A8
-```
-
-```
-setenv fdt_high 0xffffffffffffffff
-```
-
-```
-bootm 0x90000000 - ${fdtcontroladdr}
+mmc info; mmc read 0x90000000 0x100000 0x61A8; setenv fdt_high 0xffffffffffffffff; bootm 0x90000000 - ${fdtcontroladdr}'
+boot
 ```
 
 ---
@@ -116,10 +105,7 @@ bootm 0x90000000 - ${fdtcontroladdr}
 After successful boot:
 
 ```
-ip link set eth0 up
-ip link set eth0 mtu 1200
-udhcpc -i eth0
-ip addr
+ip addr; ip link set eth0 up; ip link set eth0 mtu 1200; udhcpc -i eth0; ip addr
 ```
 
 ---
@@ -132,10 +118,8 @@ echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 ```
 
 ```
+ps | grep sshd
 killall sshd
-```
-
-```
 /usr/sbin/sshd
 ```
 

@@ -196,7 +196,9 @@ The token must be requested from aicas.
 
 ## 11. Help
 
+```
 ./CloudConnector-riscv --help
+```
 
 ---
 

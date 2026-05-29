@@ -95,8 +95,17 @@ Run the following in U-Boot:
 
 ```
 mmc info
+```
+
+```
 mmc read 0x90000000 0x100000 0x61A8
+```
+
+```
 setenv fdt_high 0xffffffffffffffff
+```
+
+```
 bootm 0x90000000 - ${fdtcontroladdr}
 ```
 

@@ -206,3 +206,34 @@ The token must be requested from aicas.
 ```
 ./CloudConnector-pc -s tcp://test.mosquitto.org:1883 -n 40 -f 1
 ```
+
+## 14. Download the executable
+
+### Directly from GitHub
+
+```
+wget https://raw.githubusercontent.com/tianhailiu/TRISTAN-CVA6-Genesys2-Cloud-Integration/c9a3f9f12f2e43f4d254de6554f37464eefbccd9/CloudConnector-riscv
+```
+
+### Use laptop as a temporary HTTP server
+
+On laptop
+```
+wget -O CloudConnector-riscv https://raw.githubusercontent.com/tianhailiu/TRISTAN-CVA6-Genesys2-Cloud-Integration/c9a3f9f12f2e43f4d254de6554f37464eefbccd9/CloudConnector-riscv
+chmod +x CloudConnector-riscv
+python3 -m http.server 8000
+```
+
+Find laptop IP:
+
+```
+ip addr
+```
+
+on the Genesys2 board:
+
+```
+wget http://ip:8000/CloudConnector-riscv
+chmod +x CloudConnector-riscv
+```
+

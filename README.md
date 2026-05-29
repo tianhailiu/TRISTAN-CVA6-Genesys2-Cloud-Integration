@@ -148,7 +148,9 @@ passwd root
 
 ## 8. Start MQTT Broker (Optional)
 
+```
 mosquitto -d
+```
 
 ---
 

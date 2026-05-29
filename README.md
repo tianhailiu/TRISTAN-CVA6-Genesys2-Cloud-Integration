@@ -93,10 +93,12 @@ You must manually boot from U-Boot.
 
 Run the following in U-Boot:
 
+```
 mmc info
 mmc read 0x90000000 0x100000 0x61A8
 setenv fdt_high 0xffffffffffffffff
 bootm 0x90000000 - ${fdtcontroladdr}
+```
 
 ---
 
@@ -104,30 +106,43 @@ bootm 0x90000000 - ${fdtcontroladdr}
 
 After successful boot:
 
+```
 ip link set eth0 up
 ip link set eth0 mtu 1200
 udhcpc -i eth0
 ip addr
+```
 
 ---
 
 ## 7. Enable SSH Access
 
+```
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+```
 
+```
 killall sshd
+```
+
+```
 /usr/sbin/sshd
+```
 
 Enable loopback:
 
+```
 ip link set lo up
 ip addr add 127.0.0.1/8 dev lo 2>/dev/null || true
 ip -6 addr add ::1/128 dev lo 2>/dev/null || true
+```
 
 Set root password:
 
+```
 passwd root
+```
 
 ---
 
@@ -141,11 +156,15 @@ mosquitto -d
 
 From host (Ubuntu):
 
+```
 scp CloudConnector-riscv root@<BOARD_IP>:/root/
+```
 
 Example:
 
+```
 scp CloudConnector-riscv root@192.168.68.105:/
+```
 
 ---
 
@@ -153,17 +172,23 @@ scp CloudConnector-riscv root@192.168.68.105:/
 
 ### Using aicas MQTT Server
 
+```
 ./CloudConnector-riscv --token=<TOKEN> -s tcp://demo-jamaicaedg.aicas.com:1883 -n 40 -f 1
+```
 
 The token must be requested from aicas.
 
 ### Using Public MQTT Broker
 
+```
 ./CloudConnector-riscv -s tcp://test.mosquitto.org:1883 -n 40 -f 1
+```
 
 ### Using Local Broker
 
+```
 ./CloudConnector-riscv -s tcp://127.0.0.1:1883 -n 40 -f 1
+```
 
 ---
 
@@ -182,4 +207,6 @@ The token must be requested from aicas.
 
 ## 13. Optional: Run on PC
 
+```
 ./CloudConnector-pc -s tcp://test.mosquitto.org:1883 -n 40 -f 1
+```
